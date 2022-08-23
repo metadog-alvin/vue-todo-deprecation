@@ -24,7 +24,6 @@ export default {
     data() {
         return {
             assignments: [],
-            active: false,
             showCompleted: true,
         }
     },
@@ -47,10 +46,6 @@ export default {
     },
 
     methods: {
-        toggle() {
-            this.active = !this.active
-        },
-
         add(name) {
             this.assignments.push({
                 name: name,
