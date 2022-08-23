@@ -1,19 +1,15 @@
 import AssignmentList from "./AssignmentList.js";
+import AssignmentCreate from "./AssignmentCreate.js";
 
 export default {
-    components: {
-        AssignmentList,
-    }, template: `
-        <section class="space-y-6">
+    components: { AssignmentList,  AssignmentCreate, },
+
+    template: `
+        <section class="flex gap-8">
             <assignment-list :assignments="filters.inProcess" title="In Process"></assignment-list>
             <assignment-list :assignments="filters.completed" title="Complete"></assignment-list>
-            
-            <form @submit.prevent="add">
-                <div class="border border-gray-600 text-black">
-                    <input v-model="newAssignment" type="text" placeholder="typeing something" class="p-2">
-                    <button class="bg-white p-2 border-l" >Add</button>
-                </div>
-            </form>
+
+            <assignment-create @add="add"></assignment-create>
         </section>
     `,
 
@@ -21,7 +17,6 @@ export default {
         return {
             assignments: [],
             active: false,
-            newAssignment: '',
         }
     },
 
@@ -46,9 +41,10 @@ export default {
         toggle() {
             this.active = !this.active
         },
-        add() {
+
+        add(name) {
             this.assignments.push({
-                name: this.newAssignment,
+                name: name,
                 complete: false,
                 id: this.assignments.length + 1
             })
