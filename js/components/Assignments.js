@@ -9,10 +9,15 @@ export default {
             <assignment-list :assignments="filters.inProcess" title="In Process">
                 <assignment-create @add="add"></assignment-create>
             </assignment-list>
-            
-            <assignment-list :assignments="filters.completed" title="Complete"></assignment-list>
 
-            
+            <div v-if="showCompleted">            
+                <assignment-list 
+                    :assignments="filters.completed" 
+                    title="Complete" 
+                    can-toggle
+                    @toggle="showCompleted = !showCompleted"
+                ></assignment-list>
+            </div>       
         </section>
     `,
 
@@ -20,6 +25,7 @@ export default {
         return {
             assignments: [],
             active: false,
+            showCompleted: true,
         }
     },
 
