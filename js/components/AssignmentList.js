@@ -1,5 +1,5 @@
 import Assignment from "./Assignment.js";
-import AssignmentTags from "./ASsignmentTags.js";
+import AssignmentTags from "./AssignmentTags.js";
 
 export default {
     components: { Assignment, AssignmentTags },
