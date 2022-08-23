@@ -22,6 +22,8 @@ export default {
                     :assignment="assignment"
                 ></assignment>
             </ul>
+            
+            <slot></slot>
         </section>
 `,
     props: {
